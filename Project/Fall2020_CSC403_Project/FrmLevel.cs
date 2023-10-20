@@ -1,4 +1,4 @@
-﻿using Fall2020_CSC403_Project.code;
+﻿using Fall2020_CSC403_Project.code; //importing necessary namespaces
 using System;
 using System.Drawing;
 using System.Windows.Forms;
