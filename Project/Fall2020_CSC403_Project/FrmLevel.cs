@@ -14,6 +14,7 @@ namespace Fall2020_CSC403_Project
         private Enemy enemyPoisonPacket;
         private Enemy bossKoolaid;
         private Enemy enemyCheeto;
+        private Enemy door;
         private Character[] walls;
 
         private DateTime timeBegin;
@@ -34,7 +35,11 @@ namespace Fall2020_CSC403_Project
             bossKoolaid = new Enemy(CreatePosition(picBossKoolAid), CreateCollider(picBossKoolAid, PADDING));
             enemyPoisonPacket = new Enemy(CreatePosition(picEnemyPoisonPacket), CreateCollider(picEnemyPoisonPacket, PADDING));
             enemyCheeto = new Enemy(CreatePosition(picEnemyCheeto), CreateCollider(picEnemyCheeto, PADDING));
+            door = new Enemy(CreatePosition(picdoor), CreateCollider(picdoor, PADDING));
 
+            picdoor.Hide();
+
+            door.Img = picdoor.BackgroundImage;
             bossKoolaid.Img = picBossKoolAid.BackgroundImage;
             enemyPoisonPacket.Img = picEnemyPoisonPacket.BackgroundImage;
             enemyCheeto.Img = picEnemyCheeto.BackgroundImage;
@@ -86,6 +91,10 @@ namespace Fall2020_CSC403_Project
             if (HitAWall(player))
             {
                 player.MoveBack();
+            }
+
+            if (HitAChar(player, door)) {
+                //enter next level
             }
 
             // check collision with enemies
@@ -199,6 +208,14 @@ namespace Fall2020_CSC403_Project
                 const int MAX_HEALTHBAR_WIDTH = 226;
                 lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
                 lblPlayerHealthFull.Text = 20.ToString();
+            }
+        }
+
+        private void FrmLevel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
             }
         }
     }
