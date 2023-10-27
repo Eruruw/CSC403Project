@@ -9,13 +9,17 @@ namespace Fall2020_CSC403_Project
 {
     public class MyApplicationContext : ApplicationContext
     {
-        private static Form currentForm;
+        public static Form currentForm;
 
         public MyApplicationContext()
         {
             // Start with MainMenuForm as the main form
             currentForm = new FrmMainMenu();
             currentForm.Show();
+        }
+        public static Form GetCurrentInstance()
+        { 
+            return currentForm;
         }
 
         public static void SwitchToFrmLevel()
@@ -34,6 +38,13 @@ namespace Fall2020_CSC403_Project
 
             //Create and Show Main Menu
             currentForm = new FrmMainMenu();
+            currentForm.Show();
+        }
+
+        public static void SwitchToFrmIntermisson() {
+            currentForm.Close();
+
+            currentForm = new FrmIntermisson();
             currentForm.Show();
         }
     }

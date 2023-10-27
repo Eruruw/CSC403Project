@@ -11,7 +11,7 @@ namespace Fall2020_CSC403_Project
     {
         public static FrmBattle instance = null;
         public FrmLevel frmLevel;
-        private Enemy enemy;
+        public Enemy enemy;
         public Player player;
 
         private FrmBattle()
@@ -83,6 +83,7 @@ namespace Fall2020_CSC403_Project
             UpdateHealthBars();
             if (player.Health <= 0 || enemy.Health <= 0)
             {
+                FrmLevel.hideEnemy(enemy);
                 instance = null;
                 Close();
             }
@@ -102,6 +103,11 @@ namespace Fall2020_CSC403_Project
         {
             picBossBattle.Visible = false;
             tmrFinalBattle.Enabled = false;
+        }
+
+        private void FrmBattle_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            instance = null;
         }
     }
 }
