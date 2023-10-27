@@ -28,10 +28,6 @@ namespace Fall2020_CSC403_Project
             BackColor = enemy.Color;
             picBossBattle.Visible = false;
 
-            // Observer pattern
-            enemy.AttackEvent += PlayerDamage;
-            player.AttackEvent += EnemyDamage;
-
             // show health
             UpdateHealthBars();
         }
@@ -74,6 +70,8 @@ namespace Fall2020_CSC403_Project
 
         private void btnAttack_Click(object sender, EventArgs e)
         {
+            enemy.AttackEvent += PlayerDamage;
+            player.AttackEvent += EnemyDamage;
             player.OnAttack(-4);
             if (enemy.Health > 0)
             {
@@ -86,6 +84,8 @@ namespace Fall2020_CSC403_Project
                 instance = null;
                 Close();
             }
+            enemy.AttackEvent -= PlayerDamage;
+            player.AttackEvent -= EnemyDamage;
         }
 
         private void EnemyDamage(int amount)
@@ -102,6 +102,34 @@ namespace Fall2020_CSC403_Project
         {
             picBossBattle.Visible = false;
             tmrFinalBattle.Enabled = false;
+        }
+
+        private void buttonFlee_Click(object sender, EventArgs e)
+        {
+            Random rng = new Random();
+            int randInt = rng.Next(2);
+            if (randInt == 0)
+            {
+                instance = null;
+                Close();
+            }
+            else
+            {
+                enemy.AttackEvent += PlayerDamage;
+                enemy.OnAttack(-2);
+                UpdateHealthBars();
+                if (player.Health <= 0)
+                {
+                    instance = null;
+                    Close();
+                }
+                enemy.AttackEvent -= PlayerDamage;
+            }
+        }
+
+        private void FrmBattle_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            instance = null;
         }
     }
 }

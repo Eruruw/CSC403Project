@@ -38,6 +38,7 @@
             this.picEnemy = new System.Windows.Forms.PictureBox();
             this.picPlayer = new System.Windows.Forms.PictureBox();
             this.tmrFinalBattle = new System.Windows.Forms.Timer(this.components);
+            this.buttonFlee = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBossBattle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
@@ -132,6 +133,17 @@
             this.tmrFinalBattle.Interval = 5600;
             this.tmrFinalBattle.Tick += new System.EventHandler(this.tmrFinalBattle_Tick);
             // 
+            // buttonFlee
+            // 
+            this.buttonFlee.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFlee.Location = new System.Drawing.Point(127, 491);
+            this.buttonFlee.Name = "buttonFlee";
+            this.buttonFlee.Size = new System.Drawing.Size(128, 43);
+            this.buttonFlee.TabIndex = 8;
+            this.buttonFlee.Text = "Flee";
+            this.buttonFlee.UseVisualStyleBackColor = true;
+            this.buttonFlee.Click += new System.EventHandler(this.buttonFlee_Click);
+            // 
             // FrmBattle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +151,7 @@
             this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(822, 603);
+            this.Controls.Add(this.buttonFlee);
             this.Controls.Add(this.picBossBattle);
             this.Controls.Add(this.lblEnemyHealthFull);
             this.Controls.Add(this.label2);
@@ -151,6 +164,7 @@
             this.Name = "FrmBattle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Fight!";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBattle_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.picBossBattle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).EndInit();
@@ -169,5 +183,6 @@
         private System.Windows.Forms.Label lblEnemyHealthFull;
         private System.Windows.Forms.PictureBox picBossBattle;
         private System.Windows.Forms.Timer tmrFinalBattle;
+        private System.Windows.Forms.Button buttonFlee;
     }
 }
