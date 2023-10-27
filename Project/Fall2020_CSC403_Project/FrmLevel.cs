@@ -10,14 +10,21 @@ namespace Fall2020_CSC403_Project
         private Player player;
         private bool healthShown = false;
         private bool fought = false;
+        private bool goToInterScreen = false;
 
-        private Enemy enemyPoisonPacket;
-        private Enemy bossKoolaid;
-        private Enemy enemyCheeto;
+        private static Enemy enemyPoisonPacket;
+        private static Enemy bossKoolaid;
+        private static Enemy enemyCheeto;
+        private static PictureBox bossPic;
+        private static PictureBox poisinPacketPic;
+        private static PictureBox cheetoPic;
+        private static PictureBox exitDoor;
+        
+        private Enemy door;
         private Character[] walls;
-
         private DateTime timeBegin;
         private FrmBattle frmBattle;
+
 
         public FrmLevel()
         {
@@ -34,7 +41,11 @@ namespace Fall2020_CSC403_Project
             bossKoolaid = new Enemy(CreatePosition(picBossKoolAid), CreateCollider(picBossKoolAid, PADDING));
             enemyPoisonPacket = new Enemy(CreatePosition(picEnemyPoisonPacket), CreateCollider(picEnemyPoisonPacket, PADDING));
             enemyCheeto = new Enemy(CreatePosition(picEnemyCheeto), CreateCollider(picEnemyCheeto, PADDING));
+            door = new Enemy(CreatePosition(picdoor), CreateCollider(picdoor, PADDING));
 
+            picdoor.Hide();
+
+            
             bossKoolaid.Img = picBossKoolAid.BackgroundImage;
             enemyPoisonPacket.Img = picEnemyPoisonPacket.BackgroundImage;
             enemyCheeto.Img = picEnemyCheeto.BackgroundImage;
@@ -42,6 +53,11 @@ namespace Fall2020_CSC403_Project
             bossKoolaid.Color = Color.Red;
             enemyPoisonPacket.Color = Color.Green;
             enemyCheeto.Color = Color.FromArgb(255, 245, 161);
+
+            bossPic = picBossKoolAid;
+            poisinPacketPic = picEnemyPoisonPacket;
+            cheetoPic = picEnemyCheeto;
+            exitDoor = picdoor;
 
             walls = new Character[NUM_WALLS];
             for (int w = 0; w < NUM_WALLS; w++)
@@ -88,18 +104,32 @@ namespace Fall2020_CSC403_Project
                 player.MoveBack();
             }
 
+            if (HitAChar(player, door)) {
+                goToInterScreen = true;
+                MyApplicationContext.SwitchToFrmIntermisson();
+            }
+
             // check collision with enemies
-            if (HitAChar(player, enemyPoisonPacket))
+            if (enemyPoisonPacket != null)
             {
-                Fight(enemyPoisonPacket);
+                if (HitAChar(player, enemyPoisonPacket))
+                {
+                    Fight(enemyPoisonPacket);
+                }
             }
-            else if (HitAChar(player, enemyCheeto))
+            if (enemyCheeto != null)
             {
-                Fight(enemyCheeto);
-            }
-            if (HitAChar(player, bossKoolaid))
+                if (HitAChar(player, enemyCheeto))
+                {
+                    Fight(enemyCheeto);
+                }
+            }   
+            if (bossKoolaid != null)
             {
-                Fight(bossKoolaid);
+                if (HitAChar(player, bossKoolaid))
+                {
+                    Fight(bossKoolaid);
+                }
             }
 
             // update player's picture box
@@ -139,6 +169,7 @@ namespace Fall2020_CSC403_Project
             {
                 frmBattle.SetupForBossBattle();
             }
+
         }
 
         private void FrmLevel_KeyDown(object sender, KeyEventArgs e)
@@ -181,6 +212,32 @@ namespace Fall2020_CSC403_Project
             }
         }
 
+        public static void hideEnemy(Enemy deadenemy) 
+        {
+            if (deadenemy == bossKoolaid)
+            {
+                bossPic.Hide();
+                bossKoolaid = null;
+            }
+            else if (deadenemy == enemyCheeto)
+            {
+                cheetoPic.Hide();
+                enemyCheeto = null;
+            }
+            else if (deadenemy == enemyPoisonPacket)
+            { 
+                poisinPacketPic.Hide();
+                enemyPoisonPacket = null;
+            }
+
+            //show door if all enemies are dead
+            if (bossKoolaid == null && enemyCheeto == null && enemyPoisonPacket == null)
+            {
+                exitDoor.Show();
+            }
+
+        }
+
         private void lblInGameTime_Click(object sender, EventArgs e)
         {
         }
@@ -199,6 +256,14 @@ namespace Fall2020_CSC403_Project
                 const int MAX_HEALTHBAR_WIDTH = 226;
                 lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
                 lblPlayerHealthFull.Text = 20.ToString();
+            }
+        }
+
+        private void FrmLevel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing && goToInterScreen == false)
+            {
+                Application.Exit();
             }
         }
     }
