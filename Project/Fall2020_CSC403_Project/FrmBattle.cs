@@ -34,6 +34,7 @@ namespace Fall2020_CSC403_Project
 
         public void SetupForBossBattle()
         {
+            buttonFlee.Visible = false;
             picBossBattle.Location = Point.Empty;
             picBossBattle.Size = ClientSize;
             picBossBattle.Visible = true;
@@ -103,6 +104,7 @@ namespace Fall2020_CSC403_Project
         {
             picBossBattle.Visible = false;
             tmrFinalBattle.Enabled = false;
+            buttonFlee.Visible = true;
         }
 
         private void buttonFlee_Click(object sender, EventArgs e)
