@@ -51,6 +51,24 @@
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="CheckpointManager.cs" />
+    <Compile Include="Paused.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paused.Designer.cs">
+      <DependentUpon>Paused.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Items.Designer.cs">
+      <DependentUpon>Items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Quit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quit.Designer.cs">
+      <DependentUpon>Quit.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmIntermisson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +101,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Items.resx">
+      <DependentUpon>Items.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quit.resx">
+      <DependentUpon>Quit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paused.resx">
+      <DependentUpon>Paused.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmIntermisson.resx">
       <DependentUpon>FrmIntermisson.cs</DependentUpon>
     </EmbeddedResource>

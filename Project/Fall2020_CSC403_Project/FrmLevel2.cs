@@ -20,8 +20,11 @@ namespace Fall2020_CSC403_Project
         private Player player;
 
         private Character[] walls;
+        private static Timer playerMove;
         private DateTime timeBegin;
         private FrmBattle frmBattle;
+
+  
 
         public FrmLevel2()
         {
@@ -35,6 +38,7 @@ namespace Fall2020_CSC403_Project
             const int NUM_WALLS = 8;
 
             player = new Player(CreatePosition(picPlayer), CreateCollider(picPlayer, PADDING));
+            playerMove = tmrPlayerMove;
 
             walls = new Character[NUM_WALLS];
             for (int w = 0; w < NUM_WALLS; w++)
@@ -120,6 +124,10 @@ namespace Fall2020_CSC403_Project
 
         private void FrmLevel2_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.P)
+            {
+                PauseGame();
+            }
             switch (e.KeyCode)
             {
                 case Keys.Left:
@@ -156,6 +164,29 @@ namespace Fall2020_CSC403_Project
                     player.ResetMoveSpeed();
                     break;
             }
+        }
+        private void PauseGame()
+        {
+            //pauseMenuForm.ShowDialog();
+            Form pause = new Paused();
+            pause.Show();
+            tmrPlayerMove.Enabled = false;
+        }
+        public static void test()
+        {
+            //playerMove.Enabled = true;
+        }
+
+        public void ContinueButton_Click(object sender, EventArgs e)
+        {
+            ClosePauseMenu();
+            tmrPlayerMove.Enabled = true;
+
+        }
+
+        public void ClosePauseMenu()
+        {
+            tmrPlayerMove.Enabled = true;
         }
 
         public void UpdateHealth()
