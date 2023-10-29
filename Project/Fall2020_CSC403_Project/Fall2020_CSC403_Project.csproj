@@ -142,7 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\door.png" />
+    <None Include="data\Empty.png" />
     <Content Include="data\forgotten_wastes.png" />
+    <None Include="data\Full-Black.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

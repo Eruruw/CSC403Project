@@ -13,6 +13,7 @@ namespace Fall2020_CSC403_Project
         public FrmLevel frmLevel;
         public Enemy enemy;
         public Player player;
+        public bool potion_chance = true;
 
         private FrmBattle()
         {
@@ -27,6 +28,7 @@ namespace Fall2020_CSC403_Project
             picEnemy.Refresh();
             BackColor = enemy.Color;
             picBossBattle.Visible = false;
+        
 
             // show health
             UpdateHealthBars();
@@ -38,11 +40,13 @@ namespace Fall2020_CSC403_Project
             picBossBattle.Location = Point.Empty;
             picBossBattle.Size = ClientSize;
             picBossBattle.Visible = true;
+            
 
             SoundPlayer simpleSound = new SoundPlayer(Resources.final_battle);
             simpleSound.Play();
 
             tmrFinalBattle.Enabled = true;
+           
         }
 
         public static FrmBattle GetInstance(Enemy enemy)
@@ -52,6 +56,7 @@ namespace Fall2020_CSC403_Project
                 instance = new FrmBattle();
                 instance.enemy = enemy;
                 instance.Setup();
+                
             }
             return instance;
         }
@@ -88,6 +93,39 @@ namespace Fall2020_CSC403_Project
             }
             enemy.AttackEvent -= PlayerDamage;
             player.AttackEvent -= EnemyDamage;
+        }
+
+        private void potion_button_Click(object sender, EventArgs e)
+        {
+            if (potion_chance)
+            {
+                enemy.AttackEvent += PlayerDamage;
+                player.AttackEvent += EnemyDamage;
+                potion_chance = false;
+                
+                //random number generation
+                Random random = new Random();
+
+
+                int randomNumber = random.Next(2) + 1;
+                if (randomNumber == 1)
+                {
+                    enemy.OnAttack(-4);
+                }
+                else
+                {
+                    player.OnAttack(-4);
+                }
+                UpdateHealthBars();
+                if (player.Health <= 0 || enemy.Health <= 0)
+                {
+                    FrmLevel.hideEnemy(enemy);
+                    instance = null;
+                    Close();
+                }
+                Potion_image.Image = Properties.Resources.Empty;
+
+            }
         }
 
         private void EnemyDamage(int amount)
@@ -134,5 +172,7 @@ namespace Fall2020_CSC403_Project
         {
             instance = null;
         }
+
+       
     }
 }
