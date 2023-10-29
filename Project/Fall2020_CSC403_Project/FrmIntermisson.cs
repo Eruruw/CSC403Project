@@ -21,5 +21,10 @@ namespace Fall2020_CSC403_Project
         {
             MyApplicationContext.SwitchToFrmMainMenu();
         }
+
+        private void Continue_Button_Click(object sender, EventArgs e)
+        {
+            MyApplicationContext.SwtichToFrmLevel2();
+        }
     }
 }

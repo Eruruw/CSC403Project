@@ -18,7 +18,7 @@ namespace Fall2020_CSC403_Project
             currentForm.Show();
         }
         public static Form GetCurrentInstance()
-        { 
+        {
             return currentForm;
         }
 
@@ -45,6 +45,13 @@ namespace Fall2020_CSC403_Project
             currentForm.Close();
 
             currentForm = new FrmIntermisson();
+            currentForm.Show();
+        }
+        public static void SwtichToFrmLevel2()
+        {
+            currentForm.Close();
+
+            currentForm = new FrmLevel2();
             currentForm.Show();
         }
     }
