@@ -51,10 +51,9 @@
             this.MainMenuPanel.Controls.Add(this.LevelSelectButton);
             this.MainMenuPanel.Controls.Add(this.label1);
             this.MainMenuPanel.Controls.Add(this.PlayButton);
-            this.MainMenuPanel.Location = new System.Drawing.Point(-10, -6);
-            this.MainMenuPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.MainMenuPanel.Location = new System.Drawing.Point(-5, -3);
             this.MainMenuPanel.Name = "MainMenuPanel";
-            this.MainMenuPanel.Size = new System.Drawing.Size(2012, 1110);
+            this.MainMenuPanel.Size = new System.Drawing.Size(1006, 577);
             this.MainMenuPanel.TabIndex = 3;
             // 
             // LevelSelectPanel
@@ -63,10 +62,10 @@
             this.LevelSelectPanel.Controls.Add(this.tableLayoutPanel1);
             this.LevelSelectPanel.Controls.Add(this.BackButton);
             this.LevelSelectPanel.Controls.Add(this.label2);
-            this.LevelSelectPanel.Location = new System.Drawing.Point(6, 6);
-            this.LevelSelectPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.LevelSelectPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LevelSelectPanel.Location = new System.Drawing.Point(0, 0);
             this.LevelSelectPanel.Name = "LevelSelectPanel";
-            this.LevelSelectPanel.Size = new System.Drawing.Size(2006, 1098);
+            this.LevelSelectPanel.Size = new System.Drawing.Size(1006, 577);
             this.LevelSelectPanel.TabIndex = 3;
             this.LevelSelectPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LevelSelectPanel_Paint);
             // 
@@ -75,16 +74,15 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 594F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 297F));
             this.tableLayoutPanel1.Controls.Add(this.Level_2_Button, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.Level_1_Button, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(28, 525);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(14, 273);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1946, 540);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(941, 281);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // Level_2_Button
@@ -93,10 +91,9 @@
             this.Level_2_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Level_2_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Level_2_Button.ForeColor = System.Drawing.Color.White;
-            this.Level_2_Button.Location = new System.Drawing.Point(682, 6);
-            this.Level_2_Button.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Level_2_Button.Location = new System.Drawing.Point(325, 3);
             this.Level_2_Button.Name = "Level_2_Button";
-            this.Level_2_Button.Size = new System.Drawing.Size(664, 258);
+            this.Level_2_Button.Size = new System.Drawing.Size(316, 134);
             this.Level_2_Button.TabIndex = 1;
             this.Level_2_Button.Text = "Level 2";
             this.Level_2_Button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -109,10 +106,9 @@
             this.Level_1_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Level_1_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Level_1_Button.ForeColor = System.Drawing.Color.White;
-            this.Level_1_Button.Location = new System.Drawing.Point(6, 6);
-            this.Level_1_Button.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Level_1_Button.Location = new System.Drawing.Point(3, 3);
             this.Level_1_Button.Name = "Level_1_Button";
-            this.Level_1_Button.Size = new System.Drawing.Size(664, 258);
+            this.Level_1_Button.Size = new System.Drawing.Size(316, 134);
             this.Level_1_Button.TabIndex = 0;
             this.Level_1_Button.Text = "Level 1";
             this.Level_1_Button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -121,10 +117,9 @@
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(50, 31);
-            this.BackButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.BackButton.Location = new System.Drawing.Point(25, 16);
             this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(206, 92);
+            this.BackButton.Size = new System.Drawing.Size(103, 48);
             this.BackButton.TabIndex = 1;
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = true;
@@ -134,19 +129,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(750, 56);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(346, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(565, 108);
+            this.label2.Size = new System.Drawing.Size(285, 55);
             this.label2.TabIndex = 0;
             this.label2.Text = "Level Select";
             // 
             // LevelSelectButton
             // 
-            this.LevelSelectButton.Location = new System.Drawing.Point(904, 812);
-            this.LevelSelectButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.LevelSelectButton.Location = new System.Drawing.Point(415, 403);
             this.LevelSelectButton.Name = "LevelSelectButton";
-            this.LevelSelectButton.Size = new System.Drawing.Size(274, 88);
+            this.LevelSelectButton.Size = new System.Drawing.Size(137, 46);
             this.LevelSelectButton.TabIndex = 2;
             this.LevelSelectButton.Text = "Level Select";
             this.LevelSelectButton.UseVisualStyleBackColor = true;
@@ -157,10 +150,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(764, 244);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(350, 135);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(548, 63);
+            this.label1.Size = new System.Drawing.Size(275, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Dungeon Slayer 3000";
             // 
@@ -168,10 +160,9 @@
             // 
             this.PlayButton.BackColor = System.Drawing.Color.Transparent;
             this.PlayButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PlayButton.Location = new System.Drawing.Point(904, 646);
-            this.PlayButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.PlayButton.Location = new System.Drawing.Point(415, 322);
             this.PlayButton.Name = "PlayButton";
-            this.PlayButton.Size = new System.Drawing.Size(274, 88);
+            this.PlayButton.Size = new System.Drawing.Size(137, 46);
             this.PlayButton.TabIndex = 0;
             this.PlayButton.Text = "Play";
             this.PlayButton.UseVisualStyleBackColor = false;
@@ -179,12 +170,11 @@
             // 
             // FrmMainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1994, 1088);
+            this.ClientSize = new System.Drawing.Size(962, 552);
             this.Controls.Add(this.MainMenuPanel);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FrmMainMenu";
             this.Text = "FrmMainMenu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMainMenu_FormClosing);

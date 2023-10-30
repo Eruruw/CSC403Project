@@ -37,8 +37,16 @@ namespace Fall2020_CSC403_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FrmLevel.test();
-            FrmLevel2.test();
+            Form currentForm = MyApplicationContext.GetCurrentInstance();
+
+            if(currentForm is FrmLevel)
+            {
+                FrmLevel.enablePlayerMove();
+            }
+            if (currentForm is FrmLevel2)
+            { 
+                FrmLevel2.enablePlayerMove();
+            }
             this.Hide();
         }
 

@@ -237,24 +237,10 @@ namespace Fall2020_CSC403_Project
             pause.Show();
             tmrPlayerMove.Enabled = false;
         }
-        public static void test()
+        public static void enablePlayerMove()
         {
             playerMove.Enabled = true;
         }
-
-        public void ContinueButton_Click(object sender, EventArgs e)
-        {
-            ClosePauseMenu();
-            tmrPlayerMove.Enabled = true;
-
-        }
-
-        public void ClosePauseMenu()
-        {
-            tmrPlayerMove.Enabled = true;
-        }
-
-
 
         public static void hideEnemy(Enemy deadenemy) 
         {
