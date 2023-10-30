@@ -23,6 +23,7 @@ namespace Fall2020_CSC403_Project
         
         private Enemy door;
         private Character[] walls;
+        private static Timer playerMove;
         private DateTime timeBegin;
         private FrmBattle frmBattle;
 
@@ -42,6 +43,7 @@ namespace Fall2020_CSC403_Project
             bossKoolaid = new Enemy(CreatePosition(picBossKoolAid), CreateCollider(picBossKoolAid, PADDING));
             enemyPoisonPacket = new Enemy(CreatePosition(picEnemyPoisonPacket), CreateCollider(picEnemyPoisonPacket, PADDING));
             enemyCheeto = new Enemy(CreatePosition(picEnemyCheeto), CreateCollider(picEnemyCheeto, PADDING));
+            playerMove = tmrPlayerMove;
             door = new Enemy(CreatePosition(picdoor), CreateCollider(picdoor, PADDING));
 
             picdoor.Hide();
@@ -186,6 +188,10 @@ namespace Fall2020_CSC403_Project
 
         private void FrmLevel_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.P)
+            {
+                PauseGame();
+            }
             switch (e.KeyCode)
             {
                 case Keys.Left:
@@ -223,6 +229,32 @@ namespace Fall2020_CSC403_Project
                     break;
             }
         }
+
+        private void PauseGame()
+        {
+            //pauseMenuForm.ShowDialog();
+            Form pause = new Paused();
+            pause.Show();
+            tmrPlayerMove.Enabled = false;
+        }
+        public static void test()
+        {
+            playerMove.Enabled = true;
+        }
+
+        public void ContinueButton_Click(object sender, EventArgs e)
+        {
+            ClosePauseMenu();
+            tmrPlayerMove.Enabled = true;
+
+        }
+
+        public void ClosePauseMenu()
+        {
+            tmrPlayerMove.Enabled = true;
+        }
+
+
 
         public static void hideEnemy(Enemy deadenemy) 
         {

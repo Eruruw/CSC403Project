@@ -74,5 +74,10 @@ namespace Fall2020_CSC403_Project
             leaveFrmMainMenu = true;
             MyApplicationContext.SwtichToFrmLevel2();
         }
+
+        private void LevelSelectPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
