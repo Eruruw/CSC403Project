@@ -39,6 +39,7 @@ namespace Fall2020_CSC403_Project
 
         private void LevelSelectButton_Click(object sender, EventArgs e)
         {
+            //grab completed levels as booleans 
             var loadedCompletion = CheckpointManager.LoadLevelCompletion();
             bool isLevel1Complete = loadedCompletion.ContainsKey("Level1") ? loadedCompletion["Level1"] : false;
             bool isLevel2Complete = loadedCompletion.ContainsKey("Level2") ? loadedCompletion["Level2"] : false;
@@ -47,7 +48,6 @@ namespace Fall2020_CSC403_Project
                 Level_1_Button.BackgroundImage = Properties.Resources.Level1Locked;
                 Level_1_Button.BackgroundImageLayout = ImageLayout.Stretch;
                 Level_1_Button.Enabled = false;
-
             }
             if (!isLevel2Complete)
             { 

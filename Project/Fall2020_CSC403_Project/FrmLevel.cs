@@ -45,7 +45,6 @@ namespace Fall2020_CSC403_Project
             door = new Enemy(CreatePosition(picdoor), CreateCollider(picdoor, PADDING));
 
             picdoor.Hide();
-
             
             bossKoolaid.Img = picBossKoolAid.BackgroundImage;
             enemyPoisonPacket.Img = picEnemyPoisonPacket.BackgroundImage;
@@ -248,7 +247,6 @@ namespace Fall2020_CSC403_Project
             {
                 exitDoor.Show();
             }
-
         }
 
         private void lblInGameTime_Click(object sender, EventArgs e)

@@ -33,14 +33,11 @@ namespace Fall2020_CSC403_Project
         }
         public static void SwitchToFrmMainMenu()
         {
-            // Close the current form
             currentForm.Close();
 
-            //Create and Show Main Menu
             currentForm = new FrmMainMenu();
             currentForm.Show();
         }
-
         public static void SwitchToFrmIntermisson() {
             currentForm.Close();
 

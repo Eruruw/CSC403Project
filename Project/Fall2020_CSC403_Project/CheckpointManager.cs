@@ -17,7 +17,7 @@ namespace Fall2020_CSC403_Project
             Dictionary<string, bool> existingData = LoadLevelCompletion();
             existingData[level] = true;
             
-            // Convert the dictionary to a string format (e.g., JSON)
+            // Convert the dictionary to a string format (JSON)
             string jsonData = JsonConvert.SerializeObject(existingData, Formatting.Indented);
 
             File.WriteAllText(checkpointFileName, jsonData);
@@ -27,8 +27,9 @@ namespace Fall2020_CSC403_Project
         {
             if (File.Exists(checkpointFileName))
             {
-
                 string jsonData = File.ReadAllText(checkpointFileName);
+
+                //convert jsonData to Dictionary
                 return Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, bool>>(jsonData);
             }
             return new Dictionary<string, bool>(); // Default value if the file doesn't exist.
