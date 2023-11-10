@@ -48,13 +48,20 @@ namespace Fall2020_CSC403_Project
 
             picdoor.Hide();
 
-            bossKoolaid.MaxHealth = 60;
-            enemyPoisonPacket.MaxHealth = 40;
-            enemyCheeto.MaxHealth = 20;
+            player.MaxHealth = 50;
+            bossKoolaid.MaxHealth = 150;
+            enemyPoisonPacket.MaxHealth = 100;
+            enemyCheeto.MaxHealth = 200;
 
-            bossKoolaid.Health = 60;
-            enemyPoisonPacket.Health = 40;
-            enemyCheeto.Health = 20;
+            player.Health = 50;
+            bossKoolaid.Health = 150;
+            enemyPoisonPacket.Health = 100;
+            enemyCheeto.Health = 200;
+
+            player.strength = 4;
+            bossKoolaid.strength = 8;
+            enemyPoisonPacket.strength = 4;
+            enemyCheeto.strength = 2;
 
             bossKoolaid.Img = picBossKoolAid.BackgroundImage;
             enemyPoisonPacket.Img = picEnemyPoisonPacket.BackgroundImage;

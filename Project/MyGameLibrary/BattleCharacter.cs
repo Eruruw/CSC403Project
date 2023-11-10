@@ -16,7 +16,7 @@ namespace Fall2020_CSC403_Project.code
         public int MaxMana { get; set; }
         public int Tech { get; set; }
         public int MaxTech { get; set; }
-        private float strength;
+        public float strength { get; set; }
 
         public event Action<int> AttackEvent;
 
@@ -25,7 +25,7 @@ namespace Fall2020_CSC403_Project.code
             MaxHealth = 20;
             MaxMana = 20;
             MaxTech = 100;
-            strength = 2;
+            strength = 1;
             Health = MaxHealth;
             Mana = MaxMana;
             Tech = MaxTech;

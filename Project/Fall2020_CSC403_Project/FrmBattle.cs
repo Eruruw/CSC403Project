@@ -127,7 +127,7 @@ namespace Fall2020_CSC403_Project
                 }
                 else
                 {
-                    player.OnAttack(-4);
+                    player.OnAttack(-8);
                 }
                 UpdateHealthBars();
                 if (player.Health <= 0 || enemy.Health <= 0)
@@ -137,7 +137,8 @@ namespace Fall2020_CSC403_Project
                     Close();
                 }
                 Potion_image.Image = Properties.Resources.Empty;
-
+                enemy.AttackEvent -= PlayerDamage;
+                player.AttackEvent -= EnemyDamage;
             }
         }
 
@@ -234,9 +235,9 @@ namespace Fall2020_CSC403_Project
             {
                 ShowHideMagic(false);
                 ShowHideButtons(true);
-                player.Mana -= 5;
+                player.Mana -= 2;
                 player.AttackEvent += EnemyDamage;
-                player.OnAttack(-2);
+                player.OnAttack(-1);
                 UpdateHealthBars();
                 if (enemy.Health <= 0)
                 {
@@ -341,7 +342,7 @@ namespace Fall2020_CSC403_Project
                 player.Tech -= 60;
                 player.AttackEvent += EnemyDamage;
                 enemy.AttackEvent += PlayerDamage;
-                player.OnAttack(-20);
+                player.OnAttack(-8);
                 if (enemy.Health > 0)
                 {
                     enemy.OnAttack(-2);
