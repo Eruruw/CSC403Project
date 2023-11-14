@@ -15,6 +15,7 @@ namespace Fall2020_CSC403_Project
         public FrmIntermisson()
         {
             InitializeComponent();
+            Store_Panel.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -25,6 +26,16 @@ namespace Fall2020_CSC403_Project
         private void Continue_Button_Click(object sender, EventArgs e)
         {
             MyApplicationContext.SwtichToFrmLevel2();
+        }
+
+        private void store_button_Click(object sender, EventArgs e)
+        {
+            Store_Panel.Show();
+        }
+
+        private void back_button_Click(object sender, EventArgs e)
+        {
+            Store_Panel.Hide();
         }
     }
 }

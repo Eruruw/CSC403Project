@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="CheckpointManager.cs" />
+    <Compile Include="Inventory.cs" />
     <Compile Include="Paused.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +133,7 @@
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="data\checkpoint.json" />
+    <None Include="data\inventory.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

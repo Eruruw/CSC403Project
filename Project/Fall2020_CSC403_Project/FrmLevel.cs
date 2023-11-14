@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static Fall2020_CSC403_Project.code.InventorySystem;
 
 namespace Fall2020_CSC403_Project
 {
@@ -60,6 +63,23 @@ namespace Fall2020_CSC403_Project
             poisinPacketPic = picEnemyPoisonPacket;
             cheetoPic = picEnemyCheeto;
             exitDoor = picdoor;
+
+            player.MaxHealth = 50;
+            player.Health = 50;
+            
+            //Potion potion = new Potion();
+
+            MyApplicationContext.inventory.AddItem(MyApplicationContext.potion, 1);
+
+            InventoryRecord inventoryRecord = MyApplicationContext.inventory.InventoryRecords.First(x => (x.InventoryItem.ID == MyApplicationContext.potion.ID) && (x.Quantity < MyApplicationContext.potion.MaximumStackableQuantity));
+            string result = "Inventory Contents:\n";
+
+            foreach (var record in MyApplicationContext.inventory.InventoryRecords)
+            {
+                result += $"{record.InventoryItem.Name} - Quantity: {record.Quantity}\n";
+                Console.WriteLine(record.InventoryItem.Name);
+                Console.WriteLine(record.Quantity);
+            }
 
             walls = new Character[NUM_WALLS];
             for (int w = 0; w < NUM_WALLS; w++)
@@ -121,6 +141,7 @@ namespace Fall2020_CSC403_Project
                 goToInterScreen = true;
                 SaveCheckPoint();
                 MyApplicationContext.SwitchToFrmIntermisson();
+                CheckpointManager.SaveInventory();
             }
 
             // check collision with enemies
@@ -273,11 +294,11 @@ namespace Fall2020_CSC403_Project
 
         public void UpdateHealth()
         {
-            if (fought) {
-                float playerHealthPer = frmBattle.player.Health / (float)frmBattle.player.MaxHealth;
+            if (true) {
+                float playerHealthPer = player.Health / (float)player.MaxHealth;
                 const int MAX_HEALTHBAR_WIDTH = 226;
                 lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
-                lblPlayerHealthFull.Text = frmBattle.player.Health.ToString();
+                lblPlayerHealthFull.Text = player.Health.ToString();
             }
             else
             {
