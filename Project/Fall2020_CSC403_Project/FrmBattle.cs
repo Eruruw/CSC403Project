@@ -23,6 +23,8 @@ namespace Fall2020_CSC403_Project
 
         public void Setup()
         {
+            SoundPlayer simpleSound = new SoundPlayer(Resources.Battle_Music);
+            simpleSound.Play();
             // update for this enemy
             picEnemy.BackgroundImage = enemy.Img;
             picEnemy.Refresh();
@@ -44,8 +46,9 @@ namespace Fall2020_CSC403_Project
             picBossBattle.Visible = true;
             
 
-            SoundPlayer simpleSound = new SoundPlayer(Resources.final_battle);
-            simpleSound.Play();
+            
+            SoundPlayer simpleSound2 = new SoundPlayer(Resources.Final_Battle_Music);
+            simpleSound2.Play();
 
             tmrFinalBattle.Enabled = true;
            
@@ -363,6 +366,11 @@ namespace Fall2020_CSC403_Project
         {
             ShowHideMagic(false);
             ShowHideButtons(true);
+        }
+
+        private void FrmBattle_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

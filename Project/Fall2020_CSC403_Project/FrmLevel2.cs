@@ -1,10 +1,12 @@
 ﻿using Fall2020_CSC403_Project.code;
+using Fall2020_CSC403_Project.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,6 +36,8 @@ namespace Fall2020_CSC403_Project
 
         private void FrmLevel_Load(object sender, EventArgs e)
         {
+            SoundPlayer simpleSound = new SoundPlayer(Resources.Level2);
+            simpleSound.Play();
             const int PADDING = 7;
             const int NUM_WALLS = 8;
 

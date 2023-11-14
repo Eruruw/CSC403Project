@@ -5,7 +5,9 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Media;
 using static Fall2020_CSC403_Project.code.InventorySystem;
+using Fall2020_CSC403_Project.Properties;
 
 namespace Fall2020_CSC403_Project
 {
@@ -39,6 +41,7 @@ namespace Fall2020_CSC403_Project
 
         private void FrmLevel_Load(object sender, EventArgs e)
         {
+            MusicForLevel();
             const int PADDING = 7;
             const int NUM_WALLS = 13;
 
@@ -320,6 +323,19 @@ namespace Fall2020_CSC403_Project
             if (e.CloseReason == CloseReason.UserClosing && goToInterScreen == false)
             {
                 Application.Exit();
+            }
+        }
+        public void MusicForLevel()
+        {
+            try
+            {
+                SoundPlayer simpleSound = new SoundPlayer(Resources.Level1);
+                simpleSound.Play();
+            }
+            catch (Exception ex)
+            {
+                // Handle exception or log the error
+                Console.WriteLine($"Error playing sound: {ex.Message}");
             }
         }
     }
