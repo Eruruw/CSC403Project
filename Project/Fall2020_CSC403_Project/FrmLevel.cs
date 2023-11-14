@@ -50,14 +50,29 @@ namespace Fall2020_CSC403_Project
             door = new Enemy(CreatePosition(picdoor), CreateCollider(picdoor, PADDING));
 
             picdoor.Hide();
-            
+
+            player.MaxHealth = 50;
+            bossKoolaid.MaxHealth = 150;
+            enemyPoisonPacket.MaxHealth = 100;
+            enemyCheeto.MaxHealth = 200;
+
+            player.Health = 50;
+            bossKoolaid.Health = 150;
+            enemyPoisonPacket.Health = 100;
+            enemyCheeto.Health = 200;
+
+            player.strength = 4;
+            bossKoolaid.strength = 8;
+            enemyPoisonPacket.strength = 4;
+            enemyCheeto.strength = 2;
+
             bossKoolaid.Img = picBossKoolAid.BackgroundImage;
             enemyPoisonPacket.Img = picEnemyPoisonPacket.BackgroundImage;
             enemyCheeto.Img = picEnemyCheeto.BackgroundImage;
 
             bossKoolaid.Color = Color.Red;
-            enemyPoisonPacket.Color = Color.Green;
-            enemyCheeto.Color = Color.FromArgb(255, 245, 161);
+            enemyPoisonPacket.Color = Color.FromArgb(203, 52, 227);
+            enemyCheeto.Color = Color.FromArgb(255, 140, 0);
 
             bossPic = picBossKoolAid;
             poisinPacketPic = picEnemyPoisonPacket;
@@ -294,19 +309,10 @@ namespace Fall2020_CSC403_Project
 
         public void UpdateHealth()
         {
-            if (true) {
-                float playerHealthPer = player.Health / (float)player.MaxHealth;
-                const int MAX_HEALTHBAR_WIDTH = 226;
-                lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
-                lblPlayerHealthFull.Text = player.Health.ToString();
-            }
-            else
-            {
-                float playerHealthPer = 1;
-                const int MAX_HEALTHBAR_WIDTH = 226;
-                lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
-                lblPlayerHealthFull.Text = 20.ToString();
-            }
+            float playerHealthPer = player.Health / (float)player.MaxHealth;
+            const int MAX_HEALTHBAR_WIDTH = 226;
+            lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
+            lblPlayerHealthFull.Text = player.Health.ToString();
         }
 
         private void FrmLevel_FormClosing(object sender, FormClosingEventArgs e)
