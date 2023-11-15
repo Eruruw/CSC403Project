@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fall2020_CSC403_Project.code;
+using MyGameLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +12,17 @@ namespace Fall2020_CSC403_Project
     public class MyApplicationContext : ApplicationContext
     {
         public static Form currentForm;
+        public static InventorySystem inventory = new InventorySystem();
+        public static int cash = 0;
+
+        public static Potion potion = new Potion();
+        public static Money money = new Money();   
 
         public MyApplicationContext()
         {
+            //load inventory
+            CheckpointManager.LoadInventory();
+
             // Start with MainMenuForm as the main form
             currentForm = new FrmMainMenu();
             currentForm.Show();

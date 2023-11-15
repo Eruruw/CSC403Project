@@ -5,12 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Fall2020_CSC403_Project.code;
+using static Fall2020_CSC403_Project.code.InventorySystem;
+using System.Collections;
 
 namespace Fall2020_CSC403_Project
 {
     public class CheckpointManager
     {
         private static string checkpointFileName = @"../../data/checkpoint.json";
+        private static string InventoryFileName = @"../../data/inventory.json";
 
         public static void SaveLevelCompletion(string level)
         {
@@ -33,6 +37,56 @@ namespace Fall2020_CSC403_Project
                 return Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, bool>>(jsonData);
             }
             return new Dictionary<string, bool>(); // Default value if the file doesn't exist.
+        }
+
+        public static void SaveInventory(){
+            Dictionary<String, int> inventory = new Dictionary<String, int>();
+            if (MyApplicationContext.cash >= 100)
+            {
+                inventory.Add("Money", MyApplicationContext.cash);
+            }
+
+            
+            foreach (var record in MyApplicationContext.inventory.InventoryRecords)
+            {
+                if (inventory.ContainsKey(record.InventoryItem.Name))
+                {
+                    inventory[record.InventoryItem.Name] += record.Quantity;
+                }
+                else 
+                {
+                    inventory.Add(record.InventoryItem.Name, record.Quantity);
+                }
+            }
+
+            string jsonData = JsonConvert.SerializeObject(inventory, Formatting.Indented);
+            File.WriteAllText(InventoryFileName, jsonData);
+        }
+
+        public static void LoadInventory() 
+        {
+            Dictionary<string, int> inventory = new Dictionary<string, int>();
+            if (File.Exists(InventoryFileName))
+            {
+                string jsonData = File.ReadAllText(InventoryFileName);
+
+                //convert jsonData to Dictionary
+                inventory = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, int>>(jsonData);
+            }
+
+            foreach (var kvp in inventory)
+            {
+            
+                if (kvp.Key == "Health Potion")
+                {
+                    MyApplicationContext.inventory.AddItem(MyApplicationContext.potion, kvp.Value);
+                }
+                if (kvp.Key == "Money")
+                { 
+                    MyApplicationContext.cash = kvp.Value;
+                }
+                
+            }
         }
     }
 }

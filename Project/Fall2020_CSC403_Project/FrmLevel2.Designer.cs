@@ -42,6 +42,10 @@
             this.picWall5 = new System.Windows.Forms.PictureBox();
             this.picWall4 = new System.Windows.Forms.PictureBox();
             this.picWall3 = new System.Windows.Forms.PictureBox();
+            this.picBossKoolAid = new System.Windows.Forms.PictureBox();
+            this.picEnemyPoisonPacket = new System.Windows.Forms.PictureBox();
+            this.picEnemyCheeto = new System.Windows.Forms.PictureBox();
+            this.picdoor = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWall6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWall2)).BeginInit();
@@ -51,6 +55,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.picWall5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWall4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWall3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBossKoolAid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEnemyPoisonPacket)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEnemyCheeto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picdoor)).BeginInit();
             this.SuspendLayout();
             // 
             // lblPlayerHealthFull
@@ -179,12 +187,60 @@
             this.picWall3.TabIndex = 21;
             this.picWall3.TabStop = false;
             // 
+            // picBossKoolAid
+            // 
+            this.picBossKoolAid.BackColor = System.Drawing.Color.Transparent;
+            this.picBossKoolAid.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.enemy_koolaid;
+            this.picBossKoolAid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picBossKoolAid.Location = new System.Drawing.Point(959, 333);
+            this.picBossKoolAid.Name = "picBossKoolAid";
+            this.picBossKoolAid.Size = new System.Drawing.Size(106, 136);
+            this.picBossKoolAid.TabIndex = 30;
+            this.picBossKoolAid.TabStop = false;
+            // 
+            // picEnemyPoisonPacket
+            // 
+            this.picEnemyPoisonPacket.BackColor = System.Drawing.Color.Transparent;
+            this.picEnemyPoisonPacket.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.enemy_poisonpacket;
+            this.picEnemyPoisonPacket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picEnemyPoisonPacket.Location = new System.Drawing.Point(404, 78);
+            this.picEnemyPoisonPacket.Name = "picEnemyPoisonPacket";
+            this.picEnemyPoisonPacket.Size = new System.Drawing.Size(114, 125);
+            this.picEnemyPoisonPacket.TabIndex = 31;
+            this.picEnemyPoisonPacket.TabStop = false;
+            // 
+            // picEnemyCheeto
+            // 
+            this.picEnemyCheeto.BackColor = System.Drawing.Color.Transparent;
+            this.picEnemyCheeto.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.enemy_cheetos;
+            this.picEnemyCheeto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picEnemyCheeto.Location = new System.Drawing.Point(418, 333);
+            this.picEnemyCheeto.Name = "picEnemyCheeto";
+            this.picEnemyCheeto.Size = new System.Drawing.Size(100, 116);
+            this.picEnemyCheeto.TabIndex = 32;
+            this.picEnemyCheeto.TabStop = false;
+            // 
+            // picdoor
+            // 
+            this.picdoor.BackColor = System.Drawing.Color.Transparent;
+            this.picdoor.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.door;
+            this.picdoor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picdoor.Location = new System.Drawing.Point(1035, 521);
+            this.picdoor.Name = "picdoor";
+            this.picdoor.Size = new System.Drawing.Size(100, 119);
+            this.picdoor.TabIndex = 33;
+            this.picdoor.TabStop = false;
+            // 
             // FrmLevel2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1176, 726);
+            this.Controls.Add(this.picdoor);
+            this.Controls.Add(this.picEnemyCheeto);
+            this.Controls.Add(this.picEnemyPoisonPacket);
+            this.Controls.Add(this.picBossKoolAid);
             this.Controls.Add(this.lblPlayerHealthFull);
             this.Controls.Add(this.lblInGameTime);
             this.Controls.Add(this.picWall6);
@@ -211,6 +267,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.picWall5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWall4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWall3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBossKoolAid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEnemyPoisonPacket)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEnemyCheeto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picdoor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,5 +291,9 @@
         private System.Windows.Forms.PictureBox picPlayer;
         private System.Windows.Forms.Timer tmrUpdateInGameTime;
         private System.Windows.Forms.Timer tmrPlayerMove;
+        private System.Windows.Forms.PictureBox picBossKoolAid;
+        private System.Windows.Forms.PictureBox picEnemyPoisonPacket;
+        private System.Windows.Forms.PictureBox picEnemyCheeto;
+        private System.Windows.Forms.PictureBox picdoor;
     }
 }

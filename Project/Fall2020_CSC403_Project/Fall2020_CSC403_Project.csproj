@@ -51,6 +51,13 @@
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="CheckpointManager.cs" />
+    <Compile Include="Moves.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moves.Designer.cs">
+      <DependentUpon>Moves.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory.cs" />
     <Compile Include="Paused.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +108,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Moves.resx">
+      <DependentUpon>Moves.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Items.resx">
       <DependentUpon>Items.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +142,7 @@
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="data\checkpoint.json" />
+    <None Include="data\inventory.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -183,14 +194,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\Level2Locked.png" />
+    <Content Include="data\Level2Thumb.png" />
+    <None Include="data\Menu_Music.wav" />
+    <None Include="data\Battle_Music.wav" />
     <Content Include="data\door.png" />
+    <None Include="data\Level_1.mp3" />
+    <None Include="data\Level_1.wav" />
     <None Include="data\Empty.png" />
+    <None Include="data\Final_Battle_Music.wav" />
     <Content Include="data\forgotten_wastes.png" />
     <Content Include="data\IntermissionBackGround.jpg" />
+    <None Include="data\Level1.wav" />
+    <None Include="data\Intermission_Music.wav" />
     <Content Include="data\Level1Locked.png" />
     <Content Include="data\level1Thumb.png" />
-    <Content Include="data\Level2Locked.png" />
-    <Content Include="data\level2Thumb.png" />
+    <None Include="data\Level2.wav" />
     <None Include="data\Full-Black.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

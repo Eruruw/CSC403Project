@@ -2,7 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using System.Media;
+using static Fall2020_CSC403_Project.code.InventorySystem;
+using Fall2020_CSC403_Project.Properties;
 
 namespace Fall2020_CSC403_Project
 {
@@ -10,8 +15,8 @@ namespace Fall2020_CSC403_Project
     {
         private Player player;
         private bool healthShown = false;
-        private bool fought = false;
-        private bool goToInterScreen = false;
+    
+        public static bool goToInterScreen = false;
 
         private static Enemy enemyPoisonPacket;
         private static Enemy bossKoolaid;
@@ -36,6 +41,7 @@ namespace Fall2020_CSC403_Project
 
         private void FrmLevel_Load(object sender, EventArgs e)
         {
+            MusicForLevel();
             const int PADDING = 7;
             const int NUM_WALLS = 13;
 
@@ -47,19 +53,56 @@ namespace Fall2020_CSC403_Project
             door = new Enemy(CreatePosition(picdoor), CreateCollider(picdoor, PADDING));
 
             picdoor.Hide();
-            
+
+            player.MaxHealth = 50;
+            bossKoolaid.MaxHealth = 150;
+            enemyPoisonPacket.MaxHealth = 100;
+            enemyCheeto.MaxHealth = 200;
+
+            player.Health = 50;
+            bossKoolaid.Health = 150;
+            enemyPoisonPacket.Health = 100;
+            enemyCheeto.Health = 200;
+
+            player.strength = 4;
+            bossKoolaid.strength = 8;
+            enemyPoisonPacket.strength = 4;
+            enemyCheeto.strength = 2;
+
             bossKoolaid.Img = picBossKoolAid.BackgroundImage;
             enemyPoisonPacket.Img = picEnemyPoisonPacket.BackgroundImage;
             enemyCheeto.Img = picEnemyCheeto.BackgroundImage;
 
             bossKoolaid.Color = Color.Red;
-            enemyPoisonPacket.Color = Color.Green;
-            enemyCheeto.Color = Color.FromArgb(255, 245, 161);
+            enemyPoisonPacket.Color = Color.FromArgb(203, 52, 227);
+            enemyCheeto.Color = Color.FromArgb(255, 140, 0);
 
             bossPic = picBossKoolAid;
             poisinPacketPic = picEnemyPoisonPacket;
             cheetoPic = picEnemyCheeto;
             exitDoor = picdoor;
+
+            player.MaxHealth = 50;
+            player.Health = 50;
+
+
+            //Inventory testing/////////////////////////////////////////////////////////
+            MyApplicationContext.inventory.AddItem(MyApplicationContext.potion, 1);
+
+            foreach (var record in MyApplicationContext.inventory.InventoryRecords)
+            {
+                Console.WriteLine(record.InventoryItem.Name);
+                Console.WriteLine(record.Quantity);
+            }
+
+            MyApplicationContext.inventory.SubItem(MyApplicationContext.potion);
+
+            foreach (var record in MyApplicationContext.inventory.InventoryRecords)
+            {
+                Console.WriteLine(record.InventoryItem.Name);
+                Console.WriteLine(record.Quantity);
+            }
+            /////////////////////////////////////////////////////////////////////////////
 
             walls = new Character[NUM_WALLS];
             for (int w = 0; w < NUM_WALLS; w++)
@@ -121,6 +164,7 @@ namespace Fall2020_CSC403_Project
                 goToInterScreen = true;
                 SaveCheckPoint();
                 MyApplicationContext.SwitchToFrmIntermisson();
+                CheckpointManager.SaveInventory();
             }
 
             // check collision with enemies
@@ -171,7 +215,6 @@ namespace Fall2020_CSC403_Project
 
         private void Fight(Enemy enemy)
         {
-            fought = true;
             healthShown = false;
             lblPlayerHealthFull.Hide();
             player.ResetMoveSpeed();
@@ -273,19 +316,10 @@ namespace Fall2020_CSC403_Project
 
         public void UpdateHealth()
         {
-            if (fought) {
-                float playerHealthPer = frmBattle.player.Health / (float)frmBattle.player.MaxHealth;
-                const int MAX_HEALTHBAR_WIDTH = 226;
-                lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
-                lblPlayerHealthFull.Text = frmBattle.player.Health.ToString();
-            }
-            else
-            {
-                float playerHealthPer = 1;
-                const int MAX_HEALTHBAR_WIDTH = 226;
-                lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
-                lblPlayerHealthFull.Text = 20.ToString();
-            }
+            float playerHealthPer = player.Health / (float)player.MaxHealth;
+            const int MAX_HEALTHBAR_WIDTH = 226;
+            lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
+            lblPlayerHealthFull.Text = player.Health.ToString();
         }
 
         private void FrmLevel_FormClosing(object sender, FormClosingEventArgs e)
@@ -293,6 +327,19 @@ namespace Fall2020_CSC403_Project
             if (e.CloseReason == CloseReason.UserClosing && goToInterScreen == false)
             {
                 Application.Exit();
+            }
+        }
+        public void MusicForLevel()
+        {
+            try
+            {
+                SoundPlayer simpleSound = new SoundPlayer(Resources.Level1);
+                simpleSound.Play();
+            }
+            catch (Exception ex)
+            {
+                // Handle exception or log the error
+                Console.WriteLine($"Error playing sound: {ex.Message}");
             }
         }
     }

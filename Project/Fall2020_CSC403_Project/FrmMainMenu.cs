@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Fall2020_CSC403_Project.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +17,8 @@ namespace Fall2020_CSC403_Project
         private bool leaveFrmMainMenu = false;
         public FrmMainMenu()
         {
+            SoundPlayer simpleSound = new SoundPlayer(Resources.Menu_Music);
+            simpleSound.Play();
             InitializeComponent();
             LevelSelectPanel.Hide();
         }
@@ -58,18 +62,18 @@ namespace Fall2020_CSC403_Project
             LevelSelectPanel.Show();
         }
 
-        private void BackButton_Click(object sender, EventArgs e)
+        private void BackButton_Click_1(object sender, EventArgs e)
         {
             LevelSelectPanel.Hide();
         }
 
-        private void Level_1_Button_Click(object sender, EventArgs e)
+        private void Level_1_Button_Click_1(object sender, EventArgs e)
         {
             leaveFrmMainMenu = true;
             MyApplicationContext.SwitchToFrmLevel();
         }
 
-        private void Level_2_Button_Click(object sender, EventArgs e)
+        private void Level_2_Button_Click_1(object sender, EventArgs e)
         {
             leaveFrmMainMenu = true;
             MyApplicationContext.SwtichToFrmLevel2();
@@ -79,5 +83,20 @@ namespace Fall2020_CSC403_Project
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            LevelSelectPanel.Show();
+            Help_Panel.Show();
+        }
+
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            LevelSelectPanel.Hide();
+            Help_Panel.Hide();
+        }
+
+        
     }
 }
