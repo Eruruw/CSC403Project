@@ -15,8 +15,8 @@ namespace Fall2020_CSC403_Project
     {
         private Player player;
         private bool healthShown = false;
-        private bool fought = false;
-        private bool goToInterScreen = false;
+    
+        public static bool goToInterScreen = false;
 
         private static Enemy enemyPoisonPacket;
         private static Enemy bossKoolaid;
@@ -215,7 +215,6 @@ namespace Fall2020_CSC403_Project
 
         private void Fight(Enemy enemy)
         {
-            fought = true;
             healthShown = false;
             lblPlayerHealthFull.Hide();
             player.ResetMoveSpeed();

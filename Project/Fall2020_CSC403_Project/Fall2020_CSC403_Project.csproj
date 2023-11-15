@@ -194,6 +194,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\Level2Locked.png" />
+    <Content Include="data\Level2Thumb.png" />
     <None Include="data\Menu_Music.wav" />
     <None Include="data\Battle_Music.wav" />
     <Content Include="data\door.png" />
@@ -208,8 +210,6 @@
     <Content Include="data\Level1Locked.png" />
     <Content Include="data\level1Thumb.png" />
     <None Include="data\Level2.wav" />
-    <Content Include="data\Level2Locked.png" />
-    <Content Include="data\level2Thumb.png" />
     <None Include="data\Full-Black.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

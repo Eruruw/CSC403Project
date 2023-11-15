@@ -59,7 +59,6 @@ namespace Fall2020_CSC403_Project
                 Level_2_Button.BackgroundImageLayout = ImageLayout.Stretch;
                 Level_2_Button.Enabled = false;
             }
-            Console.WriteLine("Help button clicked");
             LevelSelectPanel.Show();
         }
 
@@ -87,14 +86,14 @@ namespace Fall2020_CSC403_Project
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Console.WriteLine("Help button clicked");
-
+            LevelSelectPanel.Show();
             Help_Panel.Show();
         }
 
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            LevelSelectPanel.Hide();
             Help_Panel.Hide();
         }
 

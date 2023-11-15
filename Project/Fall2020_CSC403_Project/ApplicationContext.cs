@@ -32,7 +32,6 @@ namespace Fall2020_CSC403_Project
             return currentForm;
         }
 
-
         public static void SwitchToFrmLevel()
         {
             // Close the current form

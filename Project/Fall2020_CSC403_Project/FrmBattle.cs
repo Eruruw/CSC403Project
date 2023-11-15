@@ -4,19 +4,20 @@ using MyGameLibrary;
 using System;
 using System.Drawing;
 using System.Media;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace Fall2020_CSC403_Project
 {
     public partial class FrmBattle : Form
     {
+
         public static FrmBattle instance = null;
-        public FrmLevel frmLevel;
         public Enemy enemy;
         public Player player;
         public bool potion_chance = true;
 
-        private FrmBattle()
+        public FrmBattle()
         {
             InitializeComponent();
             player = Game.player;
@@ -71,7 +72,18 @@ namespace Fall2020_CSC403_Project
         {
             if (player.Health <= 0) 
             {
-                //Application.Exit();
+                MessageBox.Show("You have died", "DEAD", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Form currentLevel = MyApplicationContext.GetCurrentInstance();
+                if (currentLevel is FrmLevel)
+                {
+                    FrmLevel.goToInterScreen = true;
+                }
+                else if (currentLevel is FrmLevel2)
+                {
+                    FrmLevel2.goToInterScreen = true;
+                }
+
+                MyApplicationContext.SwitchToFrmMainMenu();
             }
 
             float playerHealthPer = player.Health / (float)player.MaxHealth;
@@ -110,7 +122,16 @@ namespace Fall2020_CSC403_Project
             if (player.Health <= 0 || enemy.Health <= 0)
             {
                 MyApplicationContext.cash += 100;
-                FrmLevel.hideEnemy(enemy);
+                Form currentLevel = MyApplicationContext.GetCurrentInstance();
+                if (currentLevel is FrmLevel)
+                {
+                    FrmLevel.hideEnemy(enemy);
+                }
+                else if (currentLevel is FrmLevel2)
+                { 
+                    FrmLevel2.hideEnemy(enemy);
+                }
+                
                 instance = null;
                 Close();
             }
