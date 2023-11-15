@@ -40,8 +40,14 @@ namespace Fall2020_CSC403_Project
             dgvInventory.Columns.Add(itemNameColumn);
             dgvInventory.Columns.Add(quantityColumn);
 
+
             // Add a row for the potion directly to the DataGridView
-            dgvInventory.Rows.Add("Potion", 1);
+            // Add a row for the potion directly to the DataGridView
+            dgvInventory.Rows.Add("Money", MyApplicationContext.cash);
+            foreach (var record in MyApplicationContext.inventory.InventoryRecords)
+            {
+                dgvInventory.Rows.Add(record.InventoryItem.Name, record.Quantity);
+            }
 
             // Set the data source for the DataGridView (not really necessary in this case)
             dgvInventory.DataSource = null;
@@ -65,12 +71,10 @@ namespace Fall2020_CSC403_Project
             else
             {
                 // If the item doesn't exist, create a new InventoryRecord for the default item
-                InventoryRecord defaultItem = new InventoryRecord();
-                defaultItem.ItemName = "Potion";
-                defaultItem.Quantity = 1;
+               
 
                 // Add the default item to the inventory system
-                inventorySystem.AddRecord(defaultItem);
+                
             }
         }
 
