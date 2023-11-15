@@ -61,5 +61,11 @@ namespace Fall2020_CSC403_Project
             Quit form3 = new Quit();
             form3.ShowDialog();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Moves moves = new Moves();
+            moves.ShowDialog();
+        }
     }
 }

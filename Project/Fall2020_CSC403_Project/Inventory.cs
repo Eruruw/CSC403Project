@@ -51,15 +51,28 @@ namespace Fall2020_CSC403_Project.code
                 }
             }
         }
+
+        internal void AddRecord(InventoryRecord defaultItem)
+        {
+            throw new NotImplementedException();
+        }
+
         public class InventoryRecord
         {
-            public ObtainableItem InventoryItem { get; private set; }
-            public int Quantity { get; private set; }
+            public ObtainableItem InventoryItem { get; set; }
+            public int Quantity { get; set; }
+            public string ItemName { get; internal set; }
+
             public InventoryRecord(ObtainableItem item, int quantity)
             {
                 InventoryItem = item;
                 Quantity = quantity;
             }
+
+            public InventoryRecord()
+            {
+            }
+
             public void AddToQuantity(int amountToAdd)
             {
                 Quantity += amountToAdd;
