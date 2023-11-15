@@ -1,4 +1,5 @@
 ﻿using Fall2020_CSC403_Project.code;
+using MyGameLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,10 @@ namespace Fall2020_CSC403_Project
     {
         public static Form currentForm;
         public static InventorySystem inventory = new InventorySystem();
+        public static int cash = 0;
 
         public static Potion potion = new Potion();
+        public static Money money = new Money();   
 
         public MyApplicationContext()
         {

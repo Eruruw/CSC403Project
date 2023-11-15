@@ -1,5 +1,6 @@
 using Fall2020_CSC403_Project.code;
 using Fall2020_CSC403_Project.Properties;
+using MyGameLibrary;
 using System;
 using System.Drawing;
 using System.Media;
@@ -68,6 +69,11 @@ namespace Fall2020_CSC403_Project
 
         private void UpdateHealthBars()
         {
+            if (player.Health <= 0) 
+            {
+                //Application.Exit();
+            }
+
             float playerHealthPer = player.Health / (float)player.MaxHealth;
             float playerManaPer = player.Mana / (float)player.MaxMana;
             float playerTechPer = player.Tech / (float)player.MaxTech;
@@ -103,6 +109,7 @@ namespace Fall2020_CSC403_Project
             UpdateHealthBars();
             if (player.Health <= 0 || enemy.Health <= 0)
             {
+                MyApplicationContext.cash += 100;
                 FrmLevel.hideEnemy(enemy);
                 instance = null;
                 Close();

@@ -41,10 +41,22 @@ namespace Fall2020_CSC403_Project
 
         public static void SaveInventory(){
             Dictionary<String, int> inventory = new Dictionary<String, int>();
+            if (MyApplicationContext.cash >= 100)
+            {
+                inventory.Add("Money", MyApplicationContext.cash);
+            }
 
+            
             foreach (var record in MyApplicationContext.inventory.InventoryRecords)
             {
-                inventory.Add(record.InventoryItem.Name, record.Quantity);
+                if (inventory.ContainsKey(record.InventoryItem.Name))
+                {
+                    inventory[record.InventoryItem.Name] += record.Quantity;
+                }
+                else 
+                {
+                    inventory.Add(record.InventoryItem.Name, record.Quantity);
+                }
             }
 
             string jsonData = JsonConvert.SerializeObject(inventory, Formatting.Indented);
@@ -64,10 +76,14 @@ namespace Fall2020_CSC403_Project
 
             foreach (var kvp in inventory)
             {
-                // Assuming ObtainableItem has a constructor that takes a name (string) and a maximum stackable quantity (int)
+            
                 if (kvp.Key == "Health Potion")
                 {
                     MyApplicationContext.inventory.AddItem(MyApplicationContext.potion, kvp.Value);
+                }
+                if (kvp.Key == "Money")
+                { 
+                    MyApplicationContext.cash = kvp.Value;
                 }
                 
             }

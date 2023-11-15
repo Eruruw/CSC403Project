@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Fall2020_CSC403_Project.code
 {
@@ -43,11 +44,23 @@ namespace Fall2020_CSC403_Project.code
                     }
                     else
                     {
-                        // Throw an exception, or somehow let the user know they are out of inventory space.
-                        // This exception here is just a quick example. Do something better in your code.
-                        // throw new Exception("There is no more space in the inventory");
                         InvFull = true;
                     }
+                }
+            }
+        }
+        public void SubItem(ObtainableItem item)
+        {
+            if (InventoryRecords.Exists(x => (x.InventoryItem.Name == item.Name) && (x.Quantity > 0)))
+            { 
+                InventoryRecord healthPotionStack = InventoryRecords
+                    .Where(x => x.InventoryItem.Name == "Health Potion" && x.Quantity > 0)
+                    .OrderBy(x => x.Quantity)
+                    .FirstOrDefault();
+                healthPotionStack.SubToQuantity(1);
+                if (healthPotionStack.Quantity == 0)
+                {
+                    InventoryRecords.RemoveAll(x => x.InventoryItem.Name == "Health Potion" && x.Quantity == 0);
                 }
             }
         }
@@ -63,6 +76,11 @@ namespace Fall2020_CSC403_Project.code
             public void AddToQuantity(int amountToAdd)
             {
                 Quantity += amountToAdd;
+            }
+
+            public void SubToQuantity(int amountToSub)
+            { 
+                Quantity -= amountToSub;
             }
         }
     }

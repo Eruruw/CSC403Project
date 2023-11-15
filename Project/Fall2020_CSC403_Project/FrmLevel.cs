@@ -84,20 +84,25 @@ namespace Fall2020_CSC403_Project
 
             player.MaxHealth = 50;
             player.Health = 50;
-            
-            //Potion potion = new Potion();
 
+
+            //Inventory testing/////////////////////////////////////////////////////////
             MyApplicationContext.inventory.AddItem(MyApplicationContext.potion, 1);
-
-            InventoryRecord inventoryRecord = MyApplicationContext.inventory.InventoryRecords.First(x => (x.InventoryItem.ID == MyApplicationContext.potion.ID) && (x.Quantity < MyApplicationContext.potion.MaximumStackableQuantity));
-            string result = "Inventory Contents:\n";
 
             foreach (var record in MyApplicationContext.inventory.InventoryRecords)
             {
-                result += $"{record.InventoryItem.Name} - Quantity: {record.Quantity}\n";
                 Console.WriteLine(record.InventoryItem.Name);
                 Console.WriteLine(record.Quantity);
             }
+
+            MyApplicationContext.inventory.SubItem(MyApplicationContext.potion);
+
+            foreach (var record in MyApplicationContext.inventory.InventoryRecords)
+            {
+                Console.WriteLine(record.InventoryItem.Name);
+                Console.WriteLine(record.Quantity);
+            }
+            /////////////////////////////////////////////////////////////////////////////
 
             walls = new Character[NUM_WALLS];
             for (int w = 0; w < NUM_WALLS; w++)

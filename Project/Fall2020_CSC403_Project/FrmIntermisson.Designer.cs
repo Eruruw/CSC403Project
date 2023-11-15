@@ -31,11 +31,13 @@
             this.Continue_Button = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.Store_Panel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.back_button = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.potion = new System.Windows.Forms.Button();
-            this.back_button = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.store_button = new System.Windows.Forms.Button();
+            this.Money = new System.Windows.Forms.Label();
+            this.MoneyVal = new System.Windows.Forms.Label();
             this.Store_Panel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +65,8 @@
             // Store_Panel
             // 
             this.Store_Panel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Store_Panel.Controls.Add(this.MoneyVal);
+            this.Store_Panel.Controls.Add(this.Money);
             this.Store_Panel.Controls.Add(this.back_button);
             this.Store_Panel.Controls.Add(this.tableLayoutPanel1);
             this.Store_Panel.Controls.Add(this.label1);
@@ -71,22 +75,22 @@
             this.Store_Panel.Size = new System.Drawing.Size(805, 456);
             this.Store_Panel.TabIndex = 2;
             // 
-            // label1
+            // back_button
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(307, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 73);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Store";
+            this.back_button.Location = new System.Drawing.Point(15, 14);
+            this.back_button.Name = "back_button";
+            this.back_button.Size = new System.Drawing.Size(110, 39);
+            this.back_button.TabIndex = 2;
+            this.back_button.Text = "Back";
+            this.back_button.UseVisualStyleBackColor = true;
+            this.back_button.Click += new System.EventHandler(this.back_button_Click);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 207F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 208F));
             this.tableLayoutPanel1.Controls.Add(this.potion, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(82, 212);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -104,19 +108,20 @@
             this.potion.Name = "potion";
             this.potion.Size = new System.Drawing.Size(206, 89);
             this.potion.TabIndex = 0;
-            this.potion.Text = "$100";
+            this.potion.Text = "Health Potion: $100";
             this.potion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.potion.UseVisualStyleBackColor = false;
+            this.potion.Click += new System.EventHandler(this.potion_Click);
             // 
-            // back_button
+            // label1
             // 
-            this.back_button.Location = new System.Drawing.Point(15, 14);
-            this.back_button.Name = "back_button";
-            this.back_button.Size = new System.Drawing.Size(110, 39);
-            this.back_button.TabIndex = 2;
-            this.back_button.Text = "Back";
-            this.back_button.UseVisualStyleBackColor = true;
-            this.back_button.Click += new System.EventHandler(this.back_button_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(307, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(186, 73);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Store";
             // 
             // store_button
             // 
@@ -127,6 +132,26 @@
             this.store_button.Text = "Enter the Store";
             this.store_button.UseVisualStyleBackColor = true;
             this.store_button.Click += new System.EventHandler(this.store_button_Click);
+            // 
+            // Money
+            // 
+            this.Money.AutoSize = true;
+            this.Money.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Money.Location = new System.Drawing.Point(627, 71);
+            this.Money.Name = "Money";
+            this.Money.Size = new System.Drawing.Size(73, 24);
+            this.Money.TabIndex = 3;
+            this.Money.Text = "Money:";
+            // 
+            // MoneyVal
+            // 
+            this.MoneyVal.AutoSize = true;
+            this.MoneyVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoneyVal.Location = new System.Drawing.Point(638, 95);
+            this.MoneyVal.Name = "MoneyVal";
+            this.MoneyVal.Size = new System.Drawing.Size(40, 18);
+            this.MoneyVal.TabIndex = 4;
+            this.MoneyVal.Text = "$100";
             // 
             // FrmIntermisson
             // 
@@ -158,5 +183,7 @@
         private System.Windows.Forms.Button potion;
         private System.Windows.Forms.Button back_button;
         private System.Windows.Forms.Button store_button;
+        private System.Windows.Forms.Label MoneyVal;
+        private System.Windows.Forms.Label Money;
     }
 }
