@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms.VisualStyles;
+﻿using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Fall2020_CSC403_Project
 {
@@ -351,6 +352,9 @@ namespace Fall2020_CSC403_Project
         private System.Windows.Forms.Button Level_1_Button;
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Label label2;
+
+        public Panel MainMenuPanel { get; private set; }
+
         private System.Windows.Forms.Panel Help_Panel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;

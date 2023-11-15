@@ -39,6 +39,7 @@ namespace Fall2020_CSC403_Project
             dgvInventory.Columns.Add(itemNameColumn);
             dgvInventory.Columns.Add(quantityColumn);
 
+
             // Add a row for the potion directly to the DataGridView
             dgvInventory.Rows.Add("Money", MyApplicationContext.cash);
             foreach (var record in MyApplicationContext.inventory.InventoryRecords)
