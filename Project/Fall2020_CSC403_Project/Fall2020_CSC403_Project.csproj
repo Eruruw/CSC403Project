@@ -51,6 +51,12 @@
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="CheckpointManager.cs" />
+    <Compile Include="Moves.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moves.Designer.cs">
+      <DependentUpon>Moves.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventory.cs" />
     <Compile Include="Paused.cs">
       <SubType>Form</SubType>
@@ -102,6 +108,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Moves.resx">
+      <DependentUpon>Moves.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Items.resx">
       <DependentUpon>Items.cs</DependentUpon>
     </EmbeddedResource>

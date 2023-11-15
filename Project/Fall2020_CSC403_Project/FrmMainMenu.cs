@@ -59,21 +59,22 @@ namespace Fall2020_CSC403_Project
                 Level_2_Button.BackgroundImageLayout = ImageLayout.Stretch;
                 Level_2_Button.Enabled = false;
             }
+            Console.WriteLine("Help button clicked");
             LevelSelectPanel.Show();
         }
 
-        private void BackButton_Click(object sender, EventArgs e)
+        private void BackButton_Click_1(object sender, EventArgs e)
         {
             LevelSelectPanel.Hide();
         }
 
-        private void Level_1_Button_Click(object sender, EventArgs e)
+        private void Level_1_Button_Click_1(object sender, EventArgs e)
         {
             leaveFrmMainMenu = true;
             MyApplicationContext.SwitchToFrmLevel();
         }
 
-        private void Level_2_Button_Click(object sender, EventArgs e)
+        private void Level_2_Button_Click_1(object sender, EventArgs e)
         {
             leaveFrmMainMenu = true;
             MyApplicationContext.SwtichToFrmLevel2();
@@ -84,5 +85,19 @@ namespace Fall2020_CSC403_Project
 
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Console.WriteLine("Help button clicked");
+
+            Help_Panel.Show();
+        }
+
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Help_Panel.Hide();
+        }
+
+        
     }
 }
